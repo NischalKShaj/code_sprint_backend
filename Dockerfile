@@ -1,0 +1,21 @@
+# Use the official Node.js image
+FROM node:18-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the container's working directory
+COPY package.json package-lock.json ./
+
+# Install dependencies inside the container
+RUN npm install
+
+# Copy the backend application code into /app inside the container
+COPY . .
+
+
+# Expose port 4000 for the backend service
+EXPOSE 4000
+
+# Command to run the backend application
+CMD ["node", "src/infrastructure/server/app.js"]
