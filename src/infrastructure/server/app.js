@@ -44,13 +44,17 @@ app.use(
 );
 
 // enabling cors policy for the application
-app.use(
-  cors({
-    origin: "https://www.codesprint.live",
-    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: "https://www.codesprint.live",
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+  credentials: true,
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options("*", cors());
 
 app.use(passport.initialize());
 app.use(passport.session());
