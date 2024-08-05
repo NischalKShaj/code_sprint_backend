@@ -45,7 +45,7 @@ jobs:
           --restart unless-stopped \
           -e NODE_ENV='production' \
           -e MONGODB_LOCAL_URI='mongodb://localhost:27017/code_sprint' \
-          -e MONGODB_CLOUD_URI='${{ secrets.MONGODB_URI }}' \
+          -e MONGODB_CLOUD_URI='${{ secrets.MONGODB_CLOUD_URI }}' \
           -e ACCESS_KEY='${{ secrets.ACCESS_KEY }}' \
           -e BUCKET_SECRET_KEY='${{ secrets.BUCKET_SECRET_KEY }}' \
           -e REGION='${{ secrets.REGION }}' \
@@ -53,6 +53,17 @@ jobs:
           -e SQS_QUEUE_URL='${{ secrets.SQS_QUEUE_URL }}' \
           -e GOOGLE_CLIENT_ID='${{ secrets.GOOGLE_CLIENT_ID }}' \
           -e GOOGLE_CLIENT_SECRET='${{ secrets.GOOGLE_CLIENT_SECRET }}' \
+          -e BASE_URL='${{ secrets.BASE_URL }}' \
+          -e EMAIL='${{ secrets.EMAIL }}' \
+          -e PASSWORD='${{ secrets.PASSWORD }}' \
+          -e SECRET='${{ secrets.SECRET }}' \
+          -e ADMIN_SECRET='${{ secrets.ADMIN_SECRET }}' \
+          -e ADMIN_LOGIN='${{ secrets.ADMIN_LOGIN }}' \
+          -e ADMIN_PASSWORD='${{ secrets.ADMIN_PASSWORD }}' \
+          -e NEXT_PUBLIC_RAZORPAY_KEY_ID='${{ secrets.NEXT_PUBLIC_RAZORPAY_KEY_ID }}' \
+          -e RAZORPAY_KEY_SECRET='${{ secrets.RAZORPAY_KEY_SECRET }}' \
+          -e CIPHER_SECRETKEY='${{ secrets.CIPHER_SECRETKEY }}' \
+          -e JUDGE0='${{ secrets.JUDGE0 }}' \
           nischalkshaj/code_sprint_backend_repo:latest
 
       - name: Check Logs if Backend Container Fails
