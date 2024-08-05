@@ -27,16 +27,16 @@ const categoryRepository = {
 
   // method to find all the categories
   showCategory: async () => {
-    try {
-      const category = await CategoryCollection.find();
-      if (category) {
-        return category;
-      } else {
-        return null;
-      }
-    } catch (error) {
-      throw error;
+    // try {
+    const category = await CategoryCollection.find();
+    if (category) {
+      return category;
+    } else {
+      return null;
     }
+    // } catch (error) {
+    //   throw error;
+    // }
   },
 };
 
