@@ -15,6 +15,16 @@ jobs:
       - name: Login to Docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
+      - name: Cleanup Dangling Docker Images
+        run: docker image prune -f
+
+      - name: Remove Old Untagged Docker Images
+        run: |
+          images=$(docker images --filter "dangling=true" -q)
+          if [ -n "$images" ]; then
+            docker rmi $images
+          fi
+
       - name: Build Backend Docker Image
         run: docker build -t nischalkshaj/code_sprint_backend_repo:latest .
 
