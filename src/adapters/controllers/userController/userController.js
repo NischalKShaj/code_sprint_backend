@@ -174,7 +174,7 @@ const userController = {
       const userId = req.params.id;
       const userData = req.body;
       const profileImage = req.file
-        ? `http://localhost:4000/uploads/image/${req.file.filename}`
+        ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
         : null;
 
       console.log("Updating user with ID:", userId);

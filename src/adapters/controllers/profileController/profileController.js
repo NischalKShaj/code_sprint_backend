@@ -58,7 +58,7 @@ const profileController = {
       const tutorId = req.params.id;
       const tutorData = req.body;
       const profileImage = req.file
-        ? `http://localhost:4000/uploads/image/${req.file.filename}`
+        ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
         : null;
 
       const response = await profileUseCase.editTutor(

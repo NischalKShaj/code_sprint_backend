@@ -24,7 +24,7 @@ const bannerController = {
     try {
       const bannerData = req.body;
       const bannerImage = req.file
-        ? `http://localhost:4000/uploads/image/${req.file.filename}`
+        ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
         : null;
 
       const response = await bannerUseCase.addBanner(bannerData, bannerImage);
@@ -60,7 +60,7 @@ const bannerController = {
       const bannerId = req.params.id;
       const bannerData = req.body;
       const bannerImage = req.file
-        ? `http://localhost:4000/uploads/image/${req.file.filename}`
+        ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
         : null;
 
       console.log(
