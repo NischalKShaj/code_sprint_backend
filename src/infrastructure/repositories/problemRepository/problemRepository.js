@@ -173,33 +173,19 @@ const problemRepository = {
         { testCases: 1, _id: 0 }
       );
 
-      const dailyChallenge = await DailyProblemCollection.findOne({
-        problemId: id,
-      });
-
-      console.log("dailyC", dailyChallenge);
-
       const today = new Date();
       today.setHours(0, 0, 0, 0); // Reset time to midnight
 
-      let dailyChallengeData = null;
+      const startOfDay = new Date(today);
+      const endOfDay = new Date(today);
+      endOfDay.setDate(endOfDay.getDate() + 1); // Move to the next day
 
-      if (dailyChallenge) {
-        const challengeDate = new Date(dailyChallenge.date);
-        challengeDate.setHours(0, 0, 0, 0); // Reset time to midnight
-
-        // Compare only the date part
-        if (today.getTime() === challengeDate.getTime()) {
-          dailyChallengeData = dailyChallenge;
-        }
-      }
-
-      console.log("dailyChallengeData", dailyChallengeData);
-
-      console.log("dailyChallengeData", dailyChallengeData);
+      const dailyChallenge = await DailyProblemCollection.findOne({
+        date: { $gte: startOfDay, $lt: endOfDay },
+      });
 
       if (mainCode && testCases) {
-        return { mainCode, testCases, dailyChallengeData };
+        return { mainCode, testCases, dailyChallengeData: dailyChallenge };
       }
     } catch (error) {
       throw error;

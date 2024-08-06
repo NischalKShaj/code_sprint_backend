@@ -9,20 +9,29 @@ const oAuthRepository = {
   // method for registering and logging in the user according to the oAuth
   oAuth: async (userData) => {
     try {
-      const userDetail = await UserCollection.findOne({
-        email: userData.email,
-      });
+      const email = userData.emails?.[0]?.value;
+      if (!email) {
+        throw new Error("Email is required.");
+      }
+      const userDetail = await UserCollection.findOne({ email });
       console.log("userDetail", userDetail);
       if (userDetail) {
-        return userDetail;
+        const updatedUserData = await UserCollection.findByIdAndUpdate(
+          {
+            _id: userDetail._id,
+          },
+          { isOnline: true },
+          { new: true }
+        );
+        return updatedUserData;
       } else {
         const password = Math.random().toString(36).slice(-8);
         const hashedPassword = bcryptjs.hashSync(password, 10);
         const user = new UserCollection({
-          username: userData.name,
-          email: userData.email,
+          username: userData.displayName,
+          email,
           password: hashedPassword,
-          profile: userData.image,
+          profile: userData.photos[0].value,
         });
         console.log("user", user);
         await user.save();
