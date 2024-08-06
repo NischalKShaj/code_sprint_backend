@@ -46,7 +46,14 @@ app.use(
 // enabling cors policy for the application
 const corsOptions = {
   origin: "https://www.codesprint.live",
-  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "HEAD"],
+  allowedHeaders: [
+    "Origin",
+    "X-Requested-With",
+    "Content-Type",
+    "Accept",
+    "Authorization",
+  ],
   credentials: true,
 };
 
