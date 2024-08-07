@@ -43,10 +43,8 @@ app.use(
   })
 );
 
-// enabling cors policy for the application
 const corsOptions = {
   origin: "https://www.codesprint.live",
-  // origin: "http://localhost:3000",
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "HEAD"],
   allowedHeaders: [
     "Origin",
@@ -62,7 +60,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Handle preflight requests
-app.options("*", cors());
+app.options("*", cors(corsOptions));
 
 app.use(passport.initialize());
 app.use(passport.session());
