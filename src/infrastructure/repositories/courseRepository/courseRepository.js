@@ -11,7 +11,7 @@ const courseRepository = {
   findCourses: async (tutorId) => {
     try {
       const tutor = await TutorCollection.findOne({ _id: tutorId });
-      console.log("tutor", tutor);
+      // console.log("tutor", tutor);
       const myVideos = tutor.course;
       console.log(myVideos);
       if (myVideos) {

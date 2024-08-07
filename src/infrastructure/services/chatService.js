@@ -9,6 +9,7 @@ const chatService = {
     const io = new Server(server, {
       cors: {
         origin: "https://www.codesprint.live",
+        // origin: "http://localhost:3000",
         methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
         credentials: true,
       },

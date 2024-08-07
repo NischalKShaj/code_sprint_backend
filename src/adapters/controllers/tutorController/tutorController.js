@@ -12,9 +12,9 @@ const tutorController = {
   getCourse: async (req, res) => {
     try {
       const tutor = req.params.id;
-      console.log("tutor", tutor);
+      // console.log("tutor", tutor);
       const course = await tutorUseCase.findCourses(tutor);
-      console.log("course", course.data);
+      // console.log("course", course.data);
       if (course.success) {
         res.status(200).json(course.data);
       } else {
@@ -27,7 +27,7 @@ const tutorController = {
 
   // controller for adding course
   addCourse: async (req, res) => {
-    const userDetails = req.query.userEmail;
+    const userDetails = req.params.userEmail;
     console.log("userDetails", userDetails);
 
     upload(req, res, async (err) => {
