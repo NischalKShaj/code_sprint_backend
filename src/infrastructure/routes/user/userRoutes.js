@@ -73,7 +73,7 @@ router.get(
 );
 
 // routers to add new courses
-router.post("/uploads/:email", authenticateUserJwt, tutorController.addCourse);
+router.post("/uploads", authenticateUserJwt, tutorController.addCourse);
 
 // router for getting the category while adding new course
 router.get("/category", authenticateUserJwt, categoryController.showCategory);

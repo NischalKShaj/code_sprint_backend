@@ -27,7 +27,16 @@ const tutorController = {
 
   // controller for adding course
   addCourse: async (req, res) => {
-    const userDetails = req.params.userEmail;
+    res.header("Access-Control-Allow-Origin", "https://www.codesprint.live");
+    res.header(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    const userDetails = req.query.userEmail;
     console.log("userDetails", userDetails);
 
     upload(req, res, async (err) => {
