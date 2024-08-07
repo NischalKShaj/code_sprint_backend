@@ -48,6 +48,12 @@ jobs:
             docker rm codesprint-backend-container
           fi
 
+      - name: Ensure Container is Removed
+        run: |
+          if [ $(docker ps -a -q -f name=codesprint-backend-container) ]; then
+            docker rm -f codesprint-backend-container
+          fi
+
       - name: Run Backend Docker Container
         run: |
           docker run -d -p 4000:4000 \
