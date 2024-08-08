@@ -45,7 +45,7 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/login",
+    failureRedirect: "https://www.codesprint.live/login",
   }),
   oAuthController.googleAuth
 );
