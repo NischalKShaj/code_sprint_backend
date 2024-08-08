@@ -45,7 +45,7 @@ app.use(
 
 const corsOptions = {
   origin: "https://www.codesprint.live",
-  methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "HEAD"],
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: [
     "Origin",
     "X-Requested-With",
