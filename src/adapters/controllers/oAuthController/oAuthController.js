@@ -35,7 +35,7 @@ const oAuth = {
         res.cookie("access_token", result.token, { httpOnly: true });
         const encodedUserData = encodeURIComponent(JSON.stringify(userData));
         res.redirect(
-          `https://codesprint.live/login?token=${result.token}&user=${encodedUserData}`
+          `https://www.codesprint.live/login?token=${result.token}&user=${encodedUserData}`
         );
       } else {
         res.status(404).json("user not found");
