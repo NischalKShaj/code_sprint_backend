@@ -1,4 +1,4 @@
-// file for the oAuth repository
+// ================== file to show the oAuth repository for the application =================== //
 
 // import all the required modules
 const UserCollection = require("../../../core/entities/user/userCollection");
@@ -14,7 +14,7 @@ const oAuthRepository = {
         throw new Error("Email is required.");
       }
       const userDetail = await UserCollection.findOne({ email });
-      console.log("userDetail", userDetail);
+
       if (userDetail) {
         const updatedUserData = await UserCollection.findByIdAndUpdate(
           {
@@ -33,9 +33,9 @@ const oAuthRepository = {
           password: hashedPassword,
           profile: userData.photos[0].value,
         });
-        console.log("user", user);
+
         await user.save();
-        console.log("user", user);
+
         return user;
       }
     } catch (error) {

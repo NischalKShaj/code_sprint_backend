@@ -1,3 +1,6 @@
+// ================== file to show the tutors collection for the application =================== //
+
+// importing the required module
 const mongoose = require("mongoose");
 
 // defining a schema for chapters within the course schema

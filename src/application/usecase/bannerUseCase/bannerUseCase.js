@@ -1,4 +1,4 @@
-// file to create the use case for the banner
+// ================== file to show the banner use-case for the application =================== //
 
 // importing the required modules
 const bannerRepository = require("../../../infrastructure/repositories/bannerRepository/bannerRepository");

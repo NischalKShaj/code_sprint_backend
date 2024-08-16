@@ -1,4 +1,4 @@
-// creating the repository for the banner
+// ================== file to show the banner repository for the application =================== //
 
 // importing the required modules
 const BannerCollection = require("../../../core/entities/banner/bannerCollection");
@@ -9,7 +9,6 @@ const bannerRepository = {
   showBanners: async () => {
     try {
       const bannerData = await BannerCollection.find();
-      console.log("bannerData", bannerData);
       if (bannerData) {
         return bannerData;
       } else {
@@ -23,14 +22,12 @@ const bannerRepository = {
   // method for adding a banner
   addBanner: async (bannerData, bannerImage) => {
     try {
-      console.log("bannerData", bannerData);
       const banner = new BannerCollection({
         name: bannerData.banner_name,
         description: bannerData.banner_description,
         bannerImage: bannerImage,
       });
       const savedBanner = await banner.save();
-      console.log("banner repo", savedBanner);
       if (savedBanner) {
         return savedBanner;
       } else {
@@ -45,7 +42,6 @@ const bannerRepository = {
   showBanner: async (bannerId) => {
     try {
       const banner = await BannerCollection.findById({ _id: bannerId });
-      console.log("banner", banner);
       if (banner) {
         return banner;
       } else {
@@ -71,8 +67,6 @@ const bannerRepository = {
         banner,
         { new: true }
       );
-
-      console.log("first", bannerDetails);
 
       if (bannerDetails) {
         return bannerDetails;

@@ -1,4 +1,4 @@
-// file to encrypting the videos
+// ================== file to show the encrypting the videos for the application =================== //
 
 // importing the required modules
 const crypto = require("crypto");
@@ -10,8 +10,6 @@ const secretKey = process.env.CIPHER_SECRETKEY;
 
 module.exports.encrypt = (text) => {
   try {
-    console.log("Secret key:", secretKey.length); // Check the secret key before further processing
-
     // Validate secretKey length and format
     if (!secretKey || secretKey.length !== 64) {
       throw new Error("Invalid secret key length or format.");

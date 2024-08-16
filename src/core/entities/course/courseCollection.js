@@ -1,3 +1,6 @@
+// ================== file to show the course collection for the application =================== //
+
+// importing the required modules
 const mongoose = require("mongoose");
 const chapterSchema = require("../chapter/chapter"); // Ensure you have exported chapterSchema correctly
 

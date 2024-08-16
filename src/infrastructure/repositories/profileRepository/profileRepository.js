@@ -1,4 +1,4 @@
-// file for the profile of the user and tutor profile repository
+// ================== file to show the profile repository for the application =================== //
 
 // importing the required modules
 const UserCollection = require("../../../core/entities/user/userCollection");
@@ -11,20 +11,14 @@ const profileRepository = {
   // method for showing the user profile
   userProfile: async (userId) => {
     try {
-      console.log("id", userId);
       const userData = await UserCollection.findById({ _id: userId });
-      console.log("userData", userData);
       const course_id = userData.courses.map((course) =>
         course.courseId.toString()
       );
 
-      console.log("course Id", course_id);
-
       const subscribed = await CourseCollection.find({
         _id: { $in: course_id },
       });
-
-      console.log("subscribed courses", subscribed);
 
       if (userData) {
         return { userData, subscribed };
@@ -41,7 +35,6 @@ const profileRepository = {
   tutorProfile: async (tutorId) => {
     try {
       const tutorData = await TutorCollection.findById(tutorId);
-      console.log("tutorData", tutorData);
 
       // for extracting the user and corresponding subscribed course
       const subscribers = await Promise.all(
@@ -61,8 +54,6 @@ const profileRepository = {
 
       const wallet = tutorData.wallet;
 
-      console.log("subscribers", subscribers);
-
       if (tutorData) {
         return { tutorData, subscribers, wallet };
       } else {
@@ -77,7 +68,6 @@ const profileRepository = {
   getGraphs: async (tutorId) => {
     try {
       const tutorData = await TutorCollection.findOne({ _id: tutorId });
-      console.log("tutorData", tutorData);
 
       // for filtering the monthly and yearly data
       const subscriptionDates = tutorData.subscribers.map((subscriber) => {
@@ -87,7 +77,6 @@ const profileRepository = {
         return { month, year };
       });
 
-      console.log("subscription date", subscriptionDates);
       return subscriptionDates;
     } catch (error) {
       throw error;
@@ -128,7 +117,6 @@ const profileRepository = {
         { _id: id },
         { problems: 1, _id: 0 }
       );
-      console.log("user", user);
 
       solvedProblems = user.problems;
 
@@ -148,8 +136,6 @@ const profileRepository = {
         return acc;
       }, {});
 
-      console.log("solved", solvedProblemsDifficulty);
-
       // for getting all the problems difficulty
       const allProblems = await ProblemCollection.find(
         {},
@@ -164,10 +150,6 @@ const profileRepository = {
         }
         return acc;
       }, {});
-
-      console.log("diff", difficultyCounts);
-
-      console.log("problem", problems);
 
       if (problems) {
         return { problems, difficultyCounts, solvedProblemsDifficulty };
@@ -213,9 +195,6 @@ const profileRepository = {
       // Checking whether there was any submission yesterday
       const hasSubmissionYesterday = hasSubmissionOnDate(yesterday);
 
-      console.log("today", hasSubmissionToday);
-      console.log("yesterday", hasSubmissionYesterday);
-
       let newStreak;
 
       if (hasSubmissionYesterday) {
@@ -235,7 +214,6 @@ const profileRepository = {
       user.streak = newStreak;
       await user.save();
 
-      console.log("user streak", newStreak);
       return newStreak;
     } catch (error) {
       throw error;

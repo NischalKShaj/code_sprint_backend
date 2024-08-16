@@ -1,4 +1,4 @@
-// router for chat
+// ================== file to show the chat routes for the application =================== //
 
 // importing the required modules
 const express = require("express");

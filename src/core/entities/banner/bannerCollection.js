@@ -1,4 +1,4 @@
-// collection for banner
+// ================== file to show the banner collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

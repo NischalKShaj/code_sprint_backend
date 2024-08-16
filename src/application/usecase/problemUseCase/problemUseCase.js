@@ -1,4 +1,4 @@
-// file to create the use case for the problem use case
+// ================== file to show the problem use-case for the application =================== //
 
 // importing the required modules
 const base64 = require("base-64");
@@ -48,11 +48,6 @@ const problemUseCase = {
     const encodedInputTest = base64.encode(inputTest);
     const encodedOutput = base64.encode(expectedOutput);
 
-    // Log encoded values for debugging
-    console.log(`Source Code: ${sourceCode} | Encoded: ${encodedSourceCode}`);
-    console.log(`Input: ${inputTest} | Encoded: ${encodedInputTest}`);
-    console.log(`Output: ${expectedOutput} | Encoded: ${encodedOutput}`);
-
     // Payload for the Judge0 server
     const payload = {
       source_code: encodedSourceCode,
@@ -81,8 +76,6 @@ const problemUseCase = {
 
       const token = response.data.token;
 
-      console.log("response", response.data);
-
       // Polling the submission status
       let statusResponse;
       let isCompleted = false;
@@ -102,7 +95,6 @@ const problemUseCase = {
 
       // Check the result
       const result = statusResponse.data;
-      console.log(result);
 
       if (result.status.id === 3) {
         // Status 3: Accepted
@@ -182,8 +174,6 @@ const problemUseCase = {
       const { mainCode, exampleTestCase } =
         await problemRepository.checkTestCase(id);
 
-      console.log("main", exampleTestCase);
-
       const decodedMain = base64.decode(mainCode.mainCode);
       // combining the source code
       const code = clientCode + "\n" + decodedMain;
@@ -195,8 +185,6 @@ const problemUseCase = {
         exampleTestCase.exampleTest,
         sourceCode
       );
-
-      console.log("verify", results);
 
       if (allPassed) {
         return { success: true, data: results };

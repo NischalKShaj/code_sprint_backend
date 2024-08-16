@@ -1,4 +1,4 @@
-// file to create the repository
+// ================== file to show the category repository for the application =================== //
 
 // importing the required modules
 const CategoryCollection = require("../../../core/entities/category/category");
@@ -27,16 +27,12 @@ const categoryRepository = {
 
   // method to find all the categories
   showCategory: async () => {
-    // try {
     const category = await CategoryCollection.find();
     if (category) {
       return category;
     } else {
       return null;
     }
-    // } catch (error) {
-    //   throw error;
-    // }
   },
 };
 

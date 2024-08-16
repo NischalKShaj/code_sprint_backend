@@ -1,4 +1,4 @@
-// file for creating the use case for the messages
+// ================== file to show the chat use-case for the application =================== //
 
 // importing the required modules
 const messageRepository = require("../../../infrastructure/repositories/messageRepository/messageRepository");
@@ -25,7 +25,6 @@ const messageUseCase = {
   // use case for adding the conversation to the database
   saveConversation: async (senderId, receiverId, message, createdAt) => {
     try {
-      console.log("data", senderId, receiverId, message, createdAt);
       let result = await messageRepository.saveConversation(
         senderId,
         receiverId,

@@ -1,4 +1,4 @@
-// file to implement the routes for the user
+// ================== file to show the user routes for the application =================== //
 
 // importing the required modules
 const express = require("express");
@@ -49,9 +49,6 @@ router.get(
   }),
   oAuthController.googleAuth
 );
-
-// router for github auth
-// router.post("/api/github", oAuthController.postOAuth);
 
 // router for online payment
 router.post("/api/razorpay", userController.handler);

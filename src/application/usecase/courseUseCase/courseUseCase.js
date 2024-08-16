@@ -1,4 +1,4 @@
-// file for creating the use case for the courses
+// ================== file to show the course use-case for the application =================== //
 
 // import the required modules
 const courseRepository = require("../../../infrastructure/repositories/courseRepository/courseRepository");

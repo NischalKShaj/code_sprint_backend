@@ -1,4 +1,4 @@
-// file to store the chats between the student and the tutor
+// ================== file to show the chat collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

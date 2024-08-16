@@ -1,4 +1,6 @@
-// file to show the repository for courses
+// ================== file to show the admin repository for the application =================== //
+
+// importing the required modules
 const TutorCollection = require("../../../core/entities/user/tutorCollection");
 const CourseCollection = require("../../../core/entities/course/courseCollection");
 const UserCollection = require("../../../core/entities/user/userCollection");
@@ -11,9 +13,9 @@ const courseRepository = {
   findCourses: async (tutorId) => {
     try {
       const tutor = await TutorCollection.findOne({ _id: tutorId });
-      // console.log("tutor", tutor);
+
       const myVideos = tutor.course;
-      console.log(myVideos);
+
       if (myVideos) {
         return myVideos;
       } else {
@@ -68,15 +70,11 @@ const courseRepository = {
     try {
       const courses = await CourseCollection.findById({ _id: courseId });
       const user = await UserCollection.findById({ _id: id });
-      console.log("user", user);
-      console.log("course", courses);
 
       // for checking whether the user schema has the course
       const subCourse = user.courses.some(
         (course) => course.courseId.toString() === courseId.toString()
       );
-
-      console.log("subCourse", subCourse);
 
       if (courses) {
         return { courses, subCourse };
@@ -91,9 +89,8 @@ const courseRepository = {
   // method for showing the specific course for the editing purpose and all
   getMyCourse: async (courseId) => {
     try {
-      console.log("ids", courseId);
       const courseData = await CourseCollection.findById({ _id: courseId });
-      console.log("courseData", courseData);
+
       if (courseData) {
         return courseData;
       } else {
@@ -107,7 +104,6 @@ const courseRepository = {
   // method for editing the course
   editCourse: async (courseData, chapters, tutorId) => {
     try {
-      console.log("inside", chapters);
       const id = courseData.courseId;
       const courseDetails = await CourseCollection.findById(id);
       const tutor = await TutorCollection.findById(tutorId);
@@ -167,7 +163,7 @@ const courseRepository = {
   getInterestedCourse: async (userId) => {
     try {
       const userData = await UserCollection.findOne({ _id: userId });
-      console.log("user", userData);
+
       if (!userData) {
         return null;
       }
@@ -189,7 +185,7 @@ const courseRepository = {
 
       // if no interested courses are there then return all course
       const allCourse = await CourseCollection.find();
-      console.log("all course", allCourse);
+
       return allCourse;
     } catch (error) {
       throw error;
@@ -200,7 +196,7 @@ const courseRepository = {
   deleteCourse: async (userId, courseId) => {
     try {
       const tutor = await TutorCollection.findById({ _id: userId });
-      console.log("tutor", tutor);
+
       if (!tutor) {
         return null;
       }

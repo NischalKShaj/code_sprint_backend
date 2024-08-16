@@ -1,4 +1,4 @@
-// file to create the controller for chats
+// ================== file to show the chat controller for the application =================== //
 
 // importing the required modules
 const messageUseCase = require("../../../application/usecase/messageUseCase/messageUseCase");

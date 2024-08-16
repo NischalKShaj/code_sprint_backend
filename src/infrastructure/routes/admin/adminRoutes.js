@@ -1,4 +1,4 @@
-// file to define the admin routes
+// ================== file to show the admin routes for the application =================== //
 
 // importing the required modules for the admin side
 const express = require("express");

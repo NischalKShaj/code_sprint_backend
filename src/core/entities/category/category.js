@@ -1,4 +1,4 @@
-// file to create the category for the courses
+// ================== file to show the category collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

@@ -1,4 +1,4 @@
-// file for the user repository
+// ================== file to show the user repository for the application =================== //
 
 // importing the modules required
 const TemporaryUserCollection = require("../../../core/entities/temporary/temporaryUserCollection");
@@ -88,7 +88,7 @@ const userRepository = {
           interests: userData.interests,
         });
         await userDetail.save();
-        console.log(userDetail);
+
         return userDetail;
       } else {
         return null;
@@ -116,7 +116,6 @@ const userRepository = {
           interests: userDetail.interests,
         });
         await user.save();
-        console.log("user", user);
 
         // removing the user from the temporary collection
         await TemporaryUserCollection.deleteOne({ otp: userOtp });
@@ -152,9 +151,9 @@ const userRepository = {
   AddSubscription: async (course, user) => {
     try {
       const courseData = await CourseCollection.findById({ _id: course });
-      console.log("course", courseData);
+
       const userData = await UserCollection.findById({ _id: user });
-      console.log("user", userData);
+
       if (courseData && userData) {
         return { courseData, userData };
       }
@@ -215,7 +214,6 @@ const userRepository = {
         });
 
         await paymentHistory.save();
-        console.log("payment history", paymentHistory);
 
         // for updating the payout amount
         const payoutData = await PayoutCollection.findOne({
@@ -228,12 +226,8 @@ const userRepository = {
             { $inc: { wallet: courseData.price }, status: true },
             { new: true }
           );
-
-          console.log("payoutData", updatedPayoutData);
         }
 
-        console.log("updatedUser", updatedUser);
-        console.log("updated TUtor", updatedTutor);
         return updatedUser;
       } else {
         return null;
@@ -253,14 +247,12 @@ const userRepository = {
       };
 
       if (profileImage) {
-        console.log("profileImage", profileImage);
         user.profileImage = profileImage;
       }
 
       const userDetails = await UserCollection.findByIdAndUpdate(userId, user, {
         new: true,
       });
-      console.log("userDetails", userDetails);
       if (userDetails) {
         return userDetails;
       } else {
@@ -285,7 +277,6 @@ const userRepository = {
           },
           { new: true }
         );
-        console.log("updated", updatedUser);
 
         // for removing the subscribed user from the tutor
         const updatedTutor = await TutorCollection.findByIdAndUpdate(
@@ -331,15 +322,12 @@ const userRepository = {
             problemId: id,
             date: new Date(),
           };
-          console.log("daily problem entry", dailyProblemEntry);
           // saving the daily problem
           user.dailyProblems.push(dailyProblemEntry);
           // updating the streak
           user.streak += 1;
           await user.save();
         }
-
-        console.log("user daily problems", user);
 
         if (!problemExist) {
           user.problems.push(id);
@@ -382,7 +370,7 @@ const userRepository = {
         { _id: { $in: tutorsIds } },
         { _id: 1, username: 1, profileImage: 1, isOnline: 1 }
       );
-      console.log("tutors", tutors);
+
       if (tutors) {
         return tutors;
       } else {

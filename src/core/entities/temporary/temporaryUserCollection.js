@@ -1,4 +1,6 @@
-// file to create the schema for the user
+// ================== file to show the users temp collection for the application =================== //
+
+// importing the required modules
 const mongoose = require("mongoose");
 
 // creating schema for the database

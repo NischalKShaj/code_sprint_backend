@@ -1,4 +1,4 @@
-// file to create the repository for the conversation b/w the sender and the receiver
+// ================== file to show the chat repository for the application =================== //
 
 // importing the required modules
 const MessageCollection = require("../../../core/entities/conversation/conversationCollection");
@@ -7,6 +7,7 @@ const TutorCollection = require("../../../core/entities/user/tutorCollection");
 
 // creating the repository for messages
 const messageRepository = {
+  // method for getting the sender and the receiver
   getConversation: async (senderId, receiverId) => {
     try {
       // checking if there is a conversation b/w the sender and the receiver

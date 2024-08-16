@@ -1,4 +1,4 @@
-// file to create the schema for the problems
+// ================== file to show the problems collection for the application =================== //
 
 // importing the required module for the schema
 const mongoose = require("mongoose");

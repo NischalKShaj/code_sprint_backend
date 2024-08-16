@@ -1,4 +1,4 @@
-// file to send email to the user
+// ================== file to show the mail service for the application =================== //
 
 // importing the required modules
 const nodemailer = require("nodemailer");

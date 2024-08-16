@@ -1,3 +1,4 @@
+// ================== file to show the admins authentication for the application =================== //
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 
@@ -5,8 +6,6 @@ dotenv.config();
 
 module.exports.authenticateAdminJwt = (req, res, next) => {
   const token = req.cookies.admin_access_token || req.headers["authorization"];
-
-  console.log("Token received:", token);
 
   // Remove "Bearer " prefix if present
   const actualToken =
@@ -16,12 +15,8 @@ module.exports.authenticateAdminJwt = (req, res, next) => {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  console.log("Actual token:", actualToken);
-
   try {
     const decoded = jwt.verify(actualToken, process.env.ADMIN_SECRET);
-
-    console.log("Decoded token:", decoded);
 
     if (decoded.role !== "admin") {
       return res.status(403).json({ message: "forbidden" });

@@ -1,4 +1,4 @@
-// src/adapter/middleware/uploadMiddleware.js
+// ================== file to show the image uploading middleware for the application =================== //
 const multer = require("multer");
 const path = require("path");
 

@@ -1,4 +1,4 @@
-// file for the problems controller
+// ================== file to show the problems controller for the application =================== //
 
 // importing the required modules
 const { response } = require("express");
@@ -23,9 +23,7 @@ const problemController = {
   // controller for adding language
   addCategory: async (req, res) => {
     try {
-      console.log("first");
       const { category } = req.body;
-      console.log("lang and id", category);
       const response = await problemUseCase.addCategory(category);
       if (response.success) {
         res.status(202).json(response.data);
@@ -138,9 +136,8 @@ const problemController = {
   showDailyProblems: async (req, res) => {
     try {
       const response = await problemUseCase.getDailyProblems();
-      console.log("response from controller", response.data);
+
       if (response.success) {
-        console.log("response from here", response.data);
         res.status(202).json(response.data);
       } else {
         console.log("response from here 404", response.data);

@@ -1,4 +1,4 @@
-// file for the admin repository
+// ================== file to show the admin repository for the application =================== //
 
 // importing the required files
 const UserCollection = require("../../../core/entities/user/userCollection");
@@ -42,7 +42,6 @@ const adminRepository = {
   findAllUsers: async () => {
     try {
       const userData = await UserCollection.find();
-      console.log("userData", userData);
       if (userData) {
         return userData;
       } else {
@@ -57,7 +56,6 @@ const adminRepository = {
   findAllTutor: async () => {
     try {
       const tutorData = await TutorCollection.find();
-      console.log("tutorData", tutorData);
       if (tutorData) {
         return tutorData;
       } else {
@@ -72,7 +70,6 @@ const adminRepository = {
   blockUnblock: async (tutor) => {
     try {
       const tutorData = await TutorCollection.findOne({ _id: tutor });
-      console.log("tutorData", tutorData);
       if (tutorData) {
         if (tutorData.blocked) {
           await TutorCollection.findByIdAndUpdate(tutor, { blocked: false });
@@ -115,12 +112,8 @@ const adminRepository = {
       const userData = await UserCollection.find();
       const userGraphs = userData.map((user) => formatDate(user.createdAt));
 
-      console.log("userGraph", userGraphs);
-
       const tutorData = await TutorCollection.find();
       const tutorGraphs = tutorData.map((tutor) => formatDate(tutor.createdAt));
-
-      console.log("tutorGraph", tutorGraphs);
 
       const totalSubscribers = await CourseCollection.aggregate([
         {
@@ -137,8 +130,6 @@ const adminRepository = {
         },
       ]);
 
-      console.log("total", totalSubscribers);
-
       const totalSolvedProblem = await ProblemCollection.aggregate([
         {
           $project: {
@@ -153,8 +144,6 @@ const adminRepository = {
           $limit: 3,
         },
       ]);
-
-      console.log("solved", totalSolvedProblem);
 
       if (userGraphs && tutorGraphs) {
         return {

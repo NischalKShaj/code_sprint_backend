@@ -1,4 +1,4 @@
-// file to implement the payment request model
+// ================== file to show the payout collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

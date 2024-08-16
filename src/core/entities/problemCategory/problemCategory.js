@@ -1,4 +1,4 @@
-// file to add the different category of the problems
+// ================== file to show the problems category collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

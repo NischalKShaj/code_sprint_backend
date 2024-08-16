@@ -1,4 +1,6 @@
-// collection for the tutor
+// ================== file to show the tutors temp collection for the application =================== //
+
+// importing required modules
 const mongoose = require("mongoose");
 
 const tutor = new mongoose.Schema(

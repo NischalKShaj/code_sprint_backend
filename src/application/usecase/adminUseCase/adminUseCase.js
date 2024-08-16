@@ -1,4 +1,4 @@
-// file for the admin use-cases
+// ================== file to show the admins use-case for the application =================== //
 
 // importing all the required modules
 const adminRepository = require("../../../infrastructure/repositories/adminRepository/adminRepository");
@@ -52,9 +52,7 @@ const adminUseCase = {
   // use-case for block and unblock
   blockUnblock: async (tutor) => {
     try {
-      console.log("tutor", tutor);
       const response = await adminRepository.blockUnblock(tutor);
-      console.log("response", response);
       if (response) {
         return { success: true, data: response };
       } else {

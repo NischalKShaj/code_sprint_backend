@@ -1,4 +1,4 @@
-// file for the admin controller
+// ================== file to show the admins controller for the application =================== //
 
 // importing the required modules for the project
 const adminUseCase = require("../../../application/usecase/adminUseCase/adminUseCase");
@@ -9,10 +9,8 @@ const adminController = {
   adminLogin: async (req, res) => {
     try {
       const data = req.body;
-      console.log("data", data);
       const result = await adminUseCase.adminLogin(data);
       if (result.success) {
-        console.log("result", result.token);
         res
           .cookie("admin_access_token", result.token, { httpOnly: true })
           .status(202)
@@ -21,7 +19,6 @@ const adminController = {
         res.status(401).json(result.data);
       }
     } catch (error) {
-      console.error("error", error); // Include error in the log
       res.status(500).json("internal server error");
     }
   },
@@ -31,13 +28,11 @@ const adminController = {
     try {
       const response = await adminUseCase.findAllUsers();
       if (response.success) {
-        console.log("data", response);
         res.status(200).json(response.data);
       } else {
         res.status(401).json(response.data);
       }
     } catch (error) {
-      console.error("error", error);
       res.status(500).json(response.data);
     }
   },
@@ -47,13 +42,11 @@ const adminController = {
     try {
       const response = await adminUseCase.findAllTutor();
       if (response.success) {
-        console.log("data", response.data);
         res.status(200).json(response.data);
       } else {
         res.status(401).json(response.data);
       }
     } catch (error) {
-      console.error("error", error);
       res.status(500).json(response.data);
     }
   },
@@ -62,17 +55,14 @@ const adminController = {
   tutorBlockUnblock: async (req, res) => {
     try {
       const tutor = req.params.id;
-      console.log("id", tutor);
       const response = await adminUseCase.blockUnblock(tutor);
       console.log("responseData", response.data);
       if (response.success) {
-        console.log("response", response.data);
         res.status(200).json(response.data);
       } else {
         res.status(401).json(response.data);
       }
     } catch (error) {
-      console.error("error", error);
       res.status(500).json(response.data);
     }
   },
@@ -81,9 +71,7 @@ const adminController = {
   userBlockUnblock: async (req, res) => {
     try {
       const user = req.params.id;
-      console.log("user", user);
       const response = await adminUseCase.userBlockUnblock(user);
-      console.log("response", response);
       if (response.success) {
         res.clearCookie("access_token").status(200).json(response.data);
       } else {

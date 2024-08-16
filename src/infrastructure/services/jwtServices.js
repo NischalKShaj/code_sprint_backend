@@ -1,4 +1,4 @@
-// file to implement the jwt tokens
+// ================== file to show the JWT service for the application =================== //
 
 // importing the required modules
 const jwt = require("jsonwebtoken");
@@ -7,7 +7,6 @@ dotenv.config();
 
 // creating the jwt tokens
 module.exports.generateJWT = (userEmail, role = "user") => {
-  // console.log("email", email);
   return jwt.sign({ email: userEmail, role }, process.env.SECRET, {
     expiresIn: "4h",
   });

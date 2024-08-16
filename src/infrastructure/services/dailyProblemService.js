@@ -1,4 +1,4 @@
-// file to schedule the daily problem for the users
+// ================== file to show the daily coding service for the application =================== //
 
 // importing the required modules
 const cron = require("node-cron");
@@ -6,7 +6,7 @@ const problemScheduler = require("../../application/usecase/problemUseCase/probl
 
 // creating the service for the scheduler
 module.exports = () => {
-  cron.schedule("30 9 * * *", async () => {
+  cron.schedule("30 2 * * *", async () => {
     try {
       console.log("Running daily problem task at 9:30 AM");
       const result = await problemScheduler.dailyProblem();

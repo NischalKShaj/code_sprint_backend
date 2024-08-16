@@ -1,4 +1,4 @@
-// controller for managing courses
+// ================== file to show the course controller for the application =================== //
 
 // imports for the files
 const courseUseCase = require("../../../application/usecase/courseUseCase/courseUseCase");
@@ -14,7 +14,6 @@ const courseController = {
       const query = req.query.query; // Search query
       const maxPrice = req.query.maxPrice; // Maximum price filter
       const minPrice = req.query.minPrice; // Minimum price filter
-      console.log("queryParams", query, maxPrice, minPrice);
 
       let result;
 
@@ -45,11 +44,9 @@ const courseController = {
     try {
       const courseId = req.params.id;
       const { id } = req.body;
-      console.log(id);
-      console.log("cid", courseId);
+
       const result = await courseUseCase.showCourse(courseId, id);
       if (result.success) {
-        console.log("result", result.data);
         res.status(202).json(result.data);
       } else {
         res.status(401).json(result.data);
@@ -64,7 +61,6 @@ const courseController = {
   editCourse: async (req, res) => {
     try {
       const tutorId = req.params.id;
-      console.log("tutorId:", tutorId);
 
       upload(req, res, async (err) => {
         if (err) {
@@ -73,9 +69,8 @@ const courseController = {
         }
 
         const files = req.files;
-        console.log("videos", files);
+
         const courseData = req.body;
-        console.log("courseData:", courseData);
 
         // Prepare chapters array to update
         let chapters = [];
@@ -114,8 +109,6 @@ const courseController = {
           }
         }
 
-        console.log("Organized Chapters: ", chapters);
-
         // Proceed with updating course data
         const response = await courseUseCase.editCourse(
           courseData,
@@ -143,7 +136,7 @@ const courseController = {
   getInterestedCourse: async (req, res) => {
     try {
       const userId = req.query.id;
-      console.log("first", userId);
+
       let response;
       if (userId) {
         response = await courseUseCase.getInterestedCourse(userId);
@@ -165,7 +158,7 @@ const courseController = {
     try {
       const userId = req.query.userId;
       const courseId = req.params.id;
-      console.log(`1:${userId},2:${courseId}`);
+
       const response = await courseUseCase.deleteCourse(userId, courseId);
       if (response.success) {
         res.status(204).json(response.data);

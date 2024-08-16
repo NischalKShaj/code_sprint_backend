@@ -1,4 +1,4 @@
-// file to implement the payout requests
+// ================== file to show the payout controller for the application =================== //
 
 // importing the required modules
 const payoutUseCase = require("../../../application/usecase/payoutUseCase/payoutUseCase");
@@ -68,7 +68,6 @@ const payoutController = {
   getPaymentHistory: async (req, res) => {
     try {
       const id = req.params.id;
-      console.log("id", id);
       const response = await payoutUseCase.getPaymentHistory(id);
       if (response.success) {
         res.status(202).json(response.data);

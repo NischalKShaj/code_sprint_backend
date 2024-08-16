@@ -1,4 +1,4 @@
-// file to create the use case for the category
+// ================== file to show the banner use-case for the application =================== //
 
 // importing the required modules
 const categoryRepository = require("../../../infrastructure/repositories/categoryRepository/categoryRepository");
@@ -23,17 +23,12 @@ const categoryUseCase = {
 
   // usecase for showing the category
   showCategory: async () => {
-    // try {
     const response = await categoryRepository.showCategory();
     if (response) {
       return { success: true, data: response };
     } else {
       return { success: false, data: response };
     }
-    // } catch (error) {
-    //   console.error("error", error);
-    //   return { success: false, data: error };
-    // }
   },
 };
 

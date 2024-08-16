@@ -1,4 +1,4 @@
-// file to implement the socket connection for the chat service
+// ================== file to show the chat service for the application =================== //
 
 // importing the required modules
 const { Server } = require("socket.io");
@@ -9,7 +9,6 @@ const chatService = {
     const io = new Server(server, {
       cors: {
         origin: "https://www.codesprint.live",
-        // origin: "http://localhost:3000",
         methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
         credentials: true,
       },
@@ -19,7 +18,6 @@ const chatService = {
       console.log(`Socket ${socket.id} connected`);
 
       socket.on("sendMessage", async (message) => {
-        console.log("Message received:", message);
         io.emit("message", message);
         await messageUseCase.saveConversation(
           message.senderId,

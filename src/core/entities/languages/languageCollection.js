@@ -1,4 +1,4 @@
-// file to add different languages for solving the problems
+// ================== file to show the language collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

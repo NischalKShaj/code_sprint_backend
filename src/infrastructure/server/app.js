@@ -1,4 +1,5 @@
-// file for starting the server
+// ================== file to show the server for the application =================== //
+
 // importing the packages
 const express = require("express");
 const dotenv = require("dotenv");

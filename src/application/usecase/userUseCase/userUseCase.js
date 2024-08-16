@@ -1,4 +1,4 @@
-// file for showcasing the users use-cases
+// ================== file to show the users use-case for the application =================== //
 
 // importing the required modules
 const userRepository = require("../../../infrastructure/repositories/userRepository/userRepository");
@@ -26,7 +26,6 @@ const userUseCase = {
   findUser: async (user) => {
     try {
       const result = await userRepository.findUser(user);
-      console.log("result", result);
       if (result) {
         const token = generateJWT.generateJWT(result.email);
         return { success: true, data: result, token };
@@ -42,7 +41,6 @@ const userUseCase = {
   userSignup: async (userData) => {
     try {
       const newUser = await userRepository.createUser(userData);
-      console.log("userUseCase", newUser);
       if (newUser) {
         return { success: true, data: newUser };
       } else {
@@ -114,7 +112,6 @@ const userUseCase = {
   paymentSuccess: async (course, user) => {
     try {
       const result = await userRepository.paymentSuccess(course, user);
-      console.log("result", result);
       if (result) {
         return { success: true, data: result };
       } else {

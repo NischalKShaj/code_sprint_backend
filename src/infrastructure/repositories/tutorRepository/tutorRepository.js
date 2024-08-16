@@ -1,4 +1,4 @@
-// file for creating the repository for the tutor
+// ================== file to show the tutor repository for the application =================== //
 
 // importing the required modules
 const TutorCollection = require("../../../core/entities/user/tutorCollection");
@@ -30,10 +30,8 @@ const tutorRepository = {
           { new: true, runValidators: true } // Ensure to return the new document and run schema validators
         );
 
-        console.log("Updated Tutor:", updatedTutor);
         return updatedTutor;
       } else {
-        console.log("Invalid email or password");
         return null;
       }
     } catch (error) {
@@ -59,7 +57,7 @@ const tutorRepository = {
           otp: tutorData.otp,
         });
         await newTutor.save();
-        console.log(newTutor);
+
         return newTutor;
       }
     } catch (error) {
@@ -106,7 +104,7 @@ const tutorRepository = {
         chapterName: chapter.chapter_name,
         videos: chapter.videos.map((video) => {
           const encryptedVideo = encrypt.encrypt(video);
-          console.log("Encrypted video:", encryptedVideo); // Check encrypted video before adding
+
           return encryptedVideo;
         }),
       }));
@@ -133,7 +131,6 @@ const tutorRepository = {
 
       // Save course data
       const savedCourseData = await courseData.save();
-      console.log("Saved course data:", savedCourseData);
 
       // Prepare module schema data for tutor
       const courseModule = {
@@ -157,7 +154,6 @@ const tutorRepository = {
       const updatedTutor = await TutorCollection.findById(tutor._id).populate(
         "course.courseId"
       );
-      console.log("Updated tutor courses:", updatedTutor.course);
 
       return { success: true, data: savedCourseData };
     } catch (error) {
@@ -173,13 +169,11 @@ const tutorRepository = {
       if (!tutor) {
         return null;
       }
-      console.log("tutor", tutor);
+
       // extracting the subscribers id
       const subscribersId = tutor.subscribers.map((subscriber) =>
         subscriber.userId.toString()
       );
-
-      console.log("subscribers id", subscribersId);
 
       // fetching the subscriber data
       const subscribers = await UserCollection.find(
@@ -189,7 +183,6 @@ const tutorRepository = {
         { _id: 1, username: 1, profileImage: 1, isOnline: 1 }
       );
 
-      console.log("subscribers", subscribers);
       if (subscribers) {
         return subscribers;
       } else {

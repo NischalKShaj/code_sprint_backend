@@ -1,4 +1,6 @@
-// file for the users controller
+// ================== file to show the user controller for the application =================== //
+
+// importing the required modules
 const userUseCase = require("../../../application/usecase/userUseCase/userUseCase");
 const tutorUseCase = require("../../../application/usecase/tutorUseCase/tutorUseCase");
 const EmailService = require("../../../infrastructure/services/mailer");
@@ -6,7 +8,6 @@ const Razorpay = require("razorpay");
 
 // function to generate otp
 const generateOTP = () => {
-  console.log("inside the function");
   return Math.floor(1000 + Math.random() * 9000).toString();
 };
 
@@ -29,10 +30,8 @@ const userController = {
   //controller for getting the login page
   getLogin: async (req, res) => {
     const user = req.body;
-    console.log("user", user);
     try {
       const details = await userUseCase.findUser(user);
-      console.log("details", details);
       if (details.success) {
         res
           .cookie("access_token", details.token, { httpOnly: true })
@@ -51,12 +50,8 @@ const userController = {
     try {
       const role = req.body.role;
       const userData = req.body;
-      console.log("userData B4", userData);
-
       const otp = generateOTP();
       userData.otp = otp;
-      console.log("otp", userData.otp);
-
       let result;
       if (role === "student") {
         result = await userUseCase.userSignup(userData);
@@ -67,7 +62,6 @@ const userController = {
       const emailService = new EmailService();
       emailService.sendOtpEmail(userData.email, otp);
 
-      console.log("controller", result);
       if (result.success) {
         res.status(201).json({ ...result.data, otp });
       } else {
@@ -82,13 +76,11 @@ const userController = {
   validateOtp: async (req, res) => {
     try {
       const otp = req.body;
-      console.log("otp", otp);
 
       const userOtp = Object.entries(otp)
         .filter(([key]) => key.startsWith("otp"))
         .map(([_, value]) => value)
         .join("");
-      console.log("userOtp", userOtp);
 
       const role = otp.selectedRole;
 
@@ -118,7 +110,6 @@ const userController = {
 
       const emailService = new EmailService();
       emailService.sendOtpEmail(email, newOTP);
-      console.log("new otp", newOTP);
       const response = await userUseCase.resendOtp(email, newOTP);
       if (response.success) {
         res.status(201).json("otp resending success");
@@ -157,7 +148,6 @@ const userController = {
     try {
       const { course, user } = req.body;
       const response = await userUseCase.paymentSuccess(course, user);
-      console.log("response", response);
       if (response.success) {
         res.status(202).json(response.data);
       } else {
@@ -176,10 +166,6 @@ const userController = {
       const profileImage = req.file
         ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
         : null;
-
-      console.log("Updating user with ID:", userId);
-      console.log("Received data:", userData);
-      console.log("Received profile image:", profileImage);
 
       const response = await userUseCase.editStudent(
         userData,
@@ -201,7 +187,6 @@ const userController = {
     try {
       const courseId = req.params.id;
       const userId = req.body.user_id;
-      console.log(`${courseId}, ${userId}`);
       const response = await userUseCase.unSubscribe(courseId, userId);
       if (response.success) {
         res.status(202).json(response.data);

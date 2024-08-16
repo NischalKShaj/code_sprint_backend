@@ -1,4 +1,4 @@
-// file for tutor controller
+// ================== file to show the tutor controller for the application =================== //
 
 // importing the required modules
 const {
@@ -12,9 +12,7 @@ const tutorController = {
   getCourse: async (req, res) => {
     try {
       const tutor = req.params.id;
-      // console.log("tutor", tutor);
       const course = await tutorUseCase.findCourses(tutor);
-      // console.log("course", course.data);
       if (course.success) {
         res.status(200).json(course.data);
       } else {
@@ -37,7 +35,6 @@ const tutorController = {
       "Origin, X-Requested-With, Content-Type, Accept, Authorization"
     );
     const userDetails = req.query.userEmail;
-    console.log("userDetails", userDetails);
 
     upload(req, res, async (err) => {
       if (err) {
@@ -47,10 +44,8 @@ const tutorController = {
 
       try {
         const files = req.files;
-        console.log("files", files);
 
         const course = req.body;
-        console.log("course Data", course);
 
         if (!files || Object.keys(files).length === 0) {
           return res
@@ -85,8 +80,6 @@ const tutorController = {
           }
         }
 
-        console.log("Organized Chapters: ", chapters);
-
         // Call your use case function to add course
         const result = await tutorUseCase.addCourses(
           course,
@@ -94,7 +87,6 @@ const tutorController = {
           userDetails
         );
         if (result.success) {
-          console.log("Success", result);
           // Example of sending a message to a queue
           await sendMessageToQueue({ course, chapters, userDetails });
           return res.status(202).json(result.data);
@@ -113,7 +105,6 @@ const tutorController = {
   getMyCourse: async (req, res) => {
     try {
       const courseId = req.params.id;
-      console.log("id", courseId);
       const response = await tutorUseCase.getMyCourse(courseId);
       if (response.success) {
         res.status(202).json(response.data);
@@ -129,7 +120,6 @@ const tutorController = {
   getAllUsers: async (req, res) => {
     try {
       const id = req.params.id;
-      console.log("id", id);
       const response = await tutorUseCase.getAllUsers(id);
       if (response.success) {
         res.status(202).json(response.data);

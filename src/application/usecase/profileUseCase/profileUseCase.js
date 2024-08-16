@@ -1,4 +1,4 @@
-// file to implement the profile use case for the user and the admin
+// ================== file to show the profile use-case for the application =================== //
 
 // importing all the required module
 const profileRepository = require("../../../infrastructure/repositories/profileRepository/profileRepository");
@@ -8,9 +8,7 @@ const profileUseCase = {
   // use case for the user profile
   userProfile: async (userId) => {
     try {
-      console.log("usr", userId);
       const response = await profileRepository.userProfile(userId);
-      console.log("res", response);
       if (response) {
         return { success: true, data: response };
       } else {

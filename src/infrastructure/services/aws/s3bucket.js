@@ -1,4 +1,4 @@
-// file to add the services for the uploading of the files in the s3 bucket
+// ================== file to show the aws S3 service for the application =================== //
 
 // importing the required modules
 const multer = require("multer");

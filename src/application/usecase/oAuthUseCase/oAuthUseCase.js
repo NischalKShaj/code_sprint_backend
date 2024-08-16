@@ -1,4 +1,4 @@
-// file for showcasing the users signed using oAuth
+// ================== file to show the oAuth use-case for the application =================== //
 
 // importing the required modules
 const oAuthRepository = require("../../../infrastructure/repositories/oAuthRepository/oAuthRepository");
@@ -9,9 +9,7 @@ const OAuthUseCase = {
   // method for the OAuth
   oAuth: async (userData) => {
     try {
-      console.log("inside");
       const result = await oAuthRepository.oAuth(userData);
-      console.log("res", result);
       if (result) {
         const token = generateJWT.generateJWT(result.email);
         return { success: true, data: result, token };

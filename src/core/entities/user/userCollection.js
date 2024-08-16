@@ -1,4 +1,6 @@
-// file to create the schema for the user
+// ================== file to show the users collection for the application =================== //
+
+// importing the required modules
 const mongoose = require("mongoose");
 
 // creating the schema for the daily problem

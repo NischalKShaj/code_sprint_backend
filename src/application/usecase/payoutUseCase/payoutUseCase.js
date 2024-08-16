@@ -1,4 +1,4 @@
-// file to implement the payout for the project
+// ================== file to show the payout use-case for the application =================== //
 
 // import the required modules
 const payoutRepository = require("../../../infrastructure/repositories/payoutRepository/payoutRepository");

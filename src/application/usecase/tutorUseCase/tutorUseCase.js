@@ -1,4 +1,4 @@
-// file for showcasing the tutors use-cases
+// ================== file to show the tutor use-case for the application =================== //
 
 // importing the required modules
 const tutorRepository = require("../../../infrastructure/repositories/tutorRepository/tutorRepository");
@@ -11,7 +11,6 @@ const tutorUseCase = {
   findTutor: async (userData) => {
     try {
       const result = await tutorRepository.findTutor(userData);
-      console.log("result inside here", result);
       if (result) {
         return { success: true, data: result };
       } else {
@@ -26,7 +25,6 @@ const tutorUseCase = {
   tutorSignup: async (userData) => {
     try {
       const newUser = await tutorRepository.createTutor(userData);
-      console.log("newUser", newUser);
       if (newUser) {
         return { success: true, data: "user sign-up success" };
       } else {

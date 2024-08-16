@@ -1,4 +1,4 @@
-// file to show the controller for the category
+// ================== file to show the category controller for the application =================== //
 
 // importing the required modules
 const categoryUseCase = require("../../../application/usecase/categoryUseCase/categoryUseCase");
@@ -9,7 +9,6 @@ const categoryController = {
   addCategory: async (req, res) => {
     try {
       const { category_name } = req.body;
-      console.log("category", category_name);
       const response = await categoryUseCase.addCategory(category_name);
       if (response.success) {
         res.status(200).json(response.data);

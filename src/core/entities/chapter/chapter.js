@@ -1,3 +1,6 @@
+// ================== file to show the chapter's collection for the application =================== //
+
+// importing the required modules
 const mongoose = require("mongoose");
 
 const chapterSchema = new mongoose.Schema(

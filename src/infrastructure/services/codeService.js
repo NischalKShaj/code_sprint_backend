@@ -1,4 +1,4 @@
-// file to execute the code and pass to the judge0 compiler
+// ================== file to show the code service for the application =================== //
 
 // importing the required modules
 const axios = require("axios");
@@ -95,7 +95,6 @@ const verifyTestCase = async (input, output, sourceCode) => {
 
       // Check the result
       const result = statusResponse.data;
-      console.log(result);
 
       if (result.status.id === 3) {
         const decodedOutput = base64.decode(result.stdout);

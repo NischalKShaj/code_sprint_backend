@@ -1,4 +1,4 @@
-// file for creating the payout repository
+// ================== file to show the payout repository for the application =================== //
 
 // importing the required modules
 const PayoutCollection = require("../../../core/entities/paymentRequest/paymentRequest");
@@ -16,7 +16,6 @@ const payoutRepository = {
         wallet: wallet,
       });
       await payoutData.save();
-      console.log("payoutData", payoutData);
       if (payoutData) {
         const message = "successfully added the payment request";
         return message;
@@ -37,7 +36,7 @@ const payoutRepository = {
         { _id: { $in: tutorId } },
         { username: 1, email: 1 }
       );
-      console.log("tutorData", tutorData);
+
       if (payouts) {
         return { payouts, tutorData };
       } else {
@@ -109,7 +108,6 @@ const payoutRepository = {
         return null;
       }
 
-      console.log("premium", premiumUser);
       return premiumUser;
     } catch (error) {
       throw error;
@@ -120,7 +118,6 @@ const payoutRepository = {
   getPaymentHistory: async (id) => {
     try {
       const paymentRecords = await PaymentCollection.find({ userId: id });
-      console.log("paymentre", paymentRecords);
 
       const paymentHistory = [];
 
@@ -141,7 +138,7 @@ const payoutRepository = {
         // Add the filtered data to the payment history array
         paymentHistory.push(filteredData);
       }
-      console.log("filtered data", paymentHistory);
+
       if (!paymentHistory) {
         return null;
       } else {

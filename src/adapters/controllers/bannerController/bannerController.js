@@ -1,4 +1,4 @@
-// file to create the banner controller for the admin side
+// ================== file to show the banner controller for the application =================== //
 
 // importing the required modules
 const bannerUseCase = require("../../../application/usecase/bannerUseCase/bannerUseCase");
@@ -42,7 +42,6 @@ const bannerController = {
   showBanner: async (req, res) => {
     try {
       const bannerId = req.params.id;
-      console.log("bannerID", bannerId);
       const response = await bannerUseCase.showBanner(bannerId);
       if (response.success) {
         res.status(202).json(response.data);
@@ -62,10 +61,6 @@ const bannerController = {
       const bannerImage = req.file
         ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
         : null;
-
-      console.log(
-        `banner id${bannerId}, banner data ${bannerData.banner_name},banner Image ${bannerImage}`
-      );
 
       const response = await bannerUseCase.editBanner(
         bannerId,

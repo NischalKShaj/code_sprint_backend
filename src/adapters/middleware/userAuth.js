@@ -1,15 +1,13 @@
-// jwt authentication
+// ================== file to show the users authentication for the application =================== //
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
 
 module.exports.authenticateUserJwt = (req, res, next) => {
   const token = req.cookies.access_token || req.headers["authorization"];
-  console.log("token", token);
   const actualToken =
     token && token.startsWith("Bearer") ? token.slice(7) : token;
   if (!actualToken) {
-    console.log("inside !token");
     return res.status(401).json({ message: "Unauthorized" });
   }
   try {

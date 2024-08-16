@@ -1,4 +1,4 @@
-// file to create the schema for the daily problem
+// ================== file to show the daily problem collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

@@ -1,5 +1,6 @@
-// file for implementing the logic for the connection with the mongodb server
+// ================== file to show the database connection for the application =================== //
 
+// importing the required modules
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();

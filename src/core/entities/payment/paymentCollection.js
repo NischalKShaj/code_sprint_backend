@@ -1,4 +1,4 @@
-// file to create the schema for the payment
+// ================== file to show the payment collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");

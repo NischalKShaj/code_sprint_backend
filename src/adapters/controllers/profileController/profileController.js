@@ -1,4 +1,4 @@
-// file to implement the controller for the profile section
+// ================== file to show the admins controller for the application =================== //
 
 // importing the required modules
 const profileUseCase = require("../../../application/usecase/profileUseCase/profileUseCase");
@@ -9,9 +9,7 @@ const profileController = {
   postUserProfile: async (req, res) => {
     try {
       const userId = req.params.id;
-      console.log("userId", userId);
       const response = await profileUseCase.userProfile(userId);
-      console.log("response", response);
       if (response.success) {
         res.status(202).json(response.data);
       } else {

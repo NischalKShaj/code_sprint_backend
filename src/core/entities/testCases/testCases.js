@@ -1,4 +1,4 @@
-// file to create the test cases for the project
+// ================== file to show the test cases collection for the application =================== //
 
 // importing the required modules
 const mongoose = require("mongoose");
