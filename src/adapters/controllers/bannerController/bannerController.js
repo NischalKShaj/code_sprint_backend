@@ -24,7 +24,7 @@ const bannerController = {
     try {
       const bannerData = req.body;
       const bannerImage = req.file
-        ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
+        ? `https://code-sprint-backend.onrender.com/uploads/image/${req.file.filename}`
         : null;
 
       const response = await bannerUseCase.addBanner(bannerData, bannerImage);
@@ -59,7 +59,7 @@ const bannerController = {
       const bannerId = req.params.id;
       const bannerData = req.body;
       const bannerImage = req.file
-        ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
+        ? `https://code-sprint-backend.onrender.com/uploads/image/${req.file.filename}`
         : null;
 
       const response = await bannerUseCase.editBanner(

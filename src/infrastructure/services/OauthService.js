@@ -11,7 +11,8 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID || "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-      callbackURL: "https://www.app.codesprint.live/auth/google/callback",
+      callbackURL:
+        "https://code-sprint-backend.onrender.com/auth/google/callback",
       scope: ["profile", "email"],
     },
     async function (accessToken, refreshToken, profile, done) {

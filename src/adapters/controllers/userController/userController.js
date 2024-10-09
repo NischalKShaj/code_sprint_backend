@@ -164,7 +164,7 @@ const userController = {
       const userId = req.params.id;
       const userData = req.body;
       const profileImage = req.file
-        ? `https://app.codesprint.live/uploads/image/${req.file.filename}`
+        ? `https://code-sprint-backend.onrender.com/uploads/image/${req.file.filename}`
         : null;
 
       const response = await userUseCase.editStudent(
