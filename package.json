@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "nodemon src/infrastructure/server/app.js",
+    "start": "node src/infrastructure/server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
